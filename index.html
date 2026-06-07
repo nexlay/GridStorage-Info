@@ -1,69 +1,583 @@
-<!DOCTYPE html>
+"<!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GridStorage Server</title>
+
+    <title>GridStorage — Self-Hosted Data Node Setup</title>
+
+    <!-- Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS Play CDN -->
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <script>
+
         tailwind.config = {
+
             theme: {
+
                 extend: {
+
+                    fontFamily: {
+
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+
+                        display: ['Space Grotesk', 'sans-serif'],
+
+                        mono: ['JetBrains Mono', 'monospace'],
+
+                    },
+
                     colors: {
-                        appBg: '#0F172A',     // Twoje scaffoldBg
-                        cardBg: '#1E293B',    // Twoje headerBg/CardBg
-                        primary: '#2563EB',   // Twoje primaryBlue
-                        textMain: '#FFFFFF',
-                        textSub: '#94A3B8'    // Twoje textSecondary
+
+                        space: {
+
+                            950: '#070a13', 
+
+                            900: '#0b0f19', // Deep base slate matching screenshot
+
+                            850: '#111726', // Premium dark card BG
+
+                            800: '#161f33', // Subtle separation border
+
+                            700: '#1d2a44', // Action state outline
+
+                        }
+
                     }
+
                 }
+
             }
+
         }
+
     </script>
+
+    <style>
+
+        html { scroll-behavior: smooth; }
+
+        ::-webkit-scrollbar { width: 8px; }
+
+        ::-webkit-scrollbar-track { background: #070a13; }
+
+        ::-webkit-scrollbar-thumb { background: #1d2a44; border-radius: 99px; }
+
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+
+        .ambient-glow {
+
+            background: radial-gradient(circle at 50% -20%, rgba(37, 99, 235, 0.15) 0%, rgba(7, 10, 19, 0) 60%);
+
+        }
+
+    </style>
+
 </head>
-<body class="bg-appBg text-textMain antialiased min-h-screen">
 
-    <main class="max-w-2xl mx-auto px-6 py-20">
-        <header class="text-center mb-16">
-            <div class="w-20 h-20 bg-cardBg rounded-3xl mx-auto mb-6 flex items-center justify-center border border-slate-700">
-                <svg class="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6z"/></svg>
-            </div>
-            <h1 class="text-4xl font-bold mb-4 tracking-tight">GridStorage Server</h1>
-            <p class="text-textSub text-lg">Self-hosted infrastructure for your inventory.</p>
-        </header>
+<body class="bg-space-900 text-slate-100 font-sans tracking-tight min-h-screen antialiased ambient-glow selection:bg-blue-600/30 selection:text-white">
 
-        <div class="bg-cardBg border border-slate-700 p-8 rounded-[32px] shadow-2xl mb-8">
-            <h2 class="text-xl font-bold mb-6">Deployment Package</h2>
-            <p class="text-textSub mb-8 leading-relaxed">
-                Download the official server deployment bundle. This package includes the configuration files required to run your private inventory node.
-            </p>
-            
-            <a href="GridStorage_Server.zip" 
-               class="flex items-center justify-center w-full py-5 bg-primary hover:bg-blue-700 text-white font-bold rounded-2xl transition-all duration-300 shadow-lg shadow-blue-900/20">
-               Download Server Bundle
-            </a>
+
+
+    <!-- Header & App Icon -->
+
+    <header class="max-w-3xl mx-auto pt-16 pb-12 px-6 text-center relative">
+
+        <div class="relative inline-flex items-center justify-center p-4 bg-space-850 border border-space-800 rounded-3xl w-20 h-20 shadow-xl mb-6 group hover:border-blue-500 hover:shadow-blue-500/10 transition-all duration-500">
+
+            <svg class="text-blue-500 w-8 h-8 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+
+                <rect x="3" y="3" width="18" height="18" rx="4" />
+
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v18M15 3v18M3 9h18M3 15h18" />
+
+            </svg>
+
+            <div class="absolute -inset-px rounded-3xl bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
         </div>
 
-        <section class="bg-cardBg/50 border border-slate-800 p-8 rounded-[32px]">
-            <h3 class="text-lg font-bold mb-6">Quick Setup</h3>
-            <div class="space-y-6">
-                <div class="flex gap-4">
-                    <div class="flex-shrink-0 w-10 h-10 rounded-2xl bg-appBg flex items-center justify-center text-primary font-bold border border-slate-700">1</div>
-                    <div>
-                        <h4 class="font-bold">Extract</h4>
-                        <p class="text-sm text-textSub mt-1">Unzip the package to your preferred location.</p>
-                    </div>
+
+
+        <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white font-display mb-3">
+
+            GridStorage Server
+
+        </h1>
+
+        <p class="text-slate-400 text-sm md:text-base max-w-lg mx-auto font-medium leading-relaxed">
+
+            Self-hosted infrastructure for your inventory. Retain 100% ownership and privacy over your private storage node.
+
+        </p>
+
+
+
+        <div class="mt-4 inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs font-semibold text-emerald-400">
+
+            <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
+
+            Enterprise Stable Release
+
+        </div>
+
+    </header>
+
+
+
+    <main class="max-w-3xl mx-auto px-6 pb-24 space-y-8">
+
+
+
+        <!-- DOWNLOAD & APP CARD -->
+
+        <section class="bg-space-850 border border-space-800 rounded-[32px] p-8 md:p-10 shadow-2xl relative overflow-hidden transition-all duration-300 hover:border-space-700">
+
+            <div class="relative z-10">
+
+                <div class="flex items-center gap-3 mb-4">
+
+                    <span class="px-2.5 py-0.5 bg-blue-500/10 text-blue-400 text-[10px] font-bold uppercase tracking-[0.15em] rounded-md border border-blue-500/20">Node v1.0.0</span>
+
+                    <span class="text-xs font-medium text-slate-500">Package size: ~14.2 MB</span>
+
                 </div>
-                <div class="flex gap-4">
-                    <div class="flex-shrink-0 w-10 h-10 rounded-2xl bg-appBg flex items-center justify-center text-primary font-bold border border-slate-700">2</div>
-                    <div>
-                        <h4 class="font-bold">Launch</h4>
-                        <p class="text-sm text-textSub mt-1">Run <code>start_server.bat</code> or <code>.sh</code>.</p>
-                    </div>
+
+                <h2 class="text-xl md:text-2xl font-bold text-white mb-3">Deployment Package</h2>
+
+                <p class="text-slate-400 text-sm leading-relaxed mb-8 max-w-xl">
+
+                    Download the official server deployment bundle. This package includes the database structures, parameters, and environment orchestrations required to mount your private data system.
+
+                </p>
+
+
+
+                <!-- Action Matrix (Customized with Google Play Slot) -->
+
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+
+                    <a href="#" class="flex-1 inline-flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-4 px-6 rounded-2xl shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20 active:scale-98 transition-all duration-200">
+
+                        <svg class="w-5 h-5 opacity-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+
+                        </svg>
+
+                        <span>Download Server Bundle</span>
+
+                    </a>
+
+
+
+                    <!-- Compact Elegant Play Store Badge Placeholder -->
+
+                    <a href="#" class="flex-1 inline-flex items-center justify-center gap-3 bg-[#131a29] hover:bg-space-800 border border-space-800 hover:border-space-700 text-slate-200 font-semibold py-4 px-6 rounded-2xl active:scale-98 transition-all duration-200">
+
+                        <svg class="w-5 h-5 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
+
+                            <path d="M5 3l14 9-14 9V3z"/>
+
+                        </svg>
+
+                        <span>Download Android App</span>
+
+                    </a>
+
                 </div>
+
             </div>
+
+            <div class="absolute -right-16 -bottom-16 w-44 h-44 bg-blue-500/5 rounded-full blur-2xl pointer-events-none"></div>
+
         </section>
+
+
+
+        <!-- PREREQUISITES -->
+
+        <section class="bg-space-850/65 border border-space-800 rounded-[32px] p-8 shadow-md">
+
+            <div class="flex items-center gap-3 mb-6">
+
+                <div class="w-8 h-8 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400">
+
+                    <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+
+                    </svg>
+
+                </div>
+
+                <h3 class="text-base font-bold text-white tracking-tight">📋 Prerequisites</h3>
+
+            </div>
+
+            <p class="text-slate-400 text-xs md:text-sm leading-relaxed mb-4">
+
+                Before initiating physical setup, guarantee Docker containers are supported and installed on your host computer or private Network Attached Storage (NAS):
+
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div class="bg-space-900 border border-space-800/80 rounded-2xl p-4 flex gap-3 items-start">
+
+                    <span class="p-1 px-2.5 rounded-lg bg-space-850 text-slate-400 font-mono text-xs font-bold">OSX/WIN</span>
+
+                    <div>
+
+                        <h4 class="text-xs font-bold text-slate-200 mb-0.5">Docker Desktop</h4>
+
+                        <p class="text-[11px] text-slate-500 leading-normal">Install and configure active Docker Engine on local hypervisors.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="bg-space-900 border border-space-800/80 rounded-2xl p-4 flex gap-3 items-start">
+
+                    <span class="p-1 px-2.5 rounded-lg bg-space-850 text-slate-400 font-mono text-xs font-bold">LINUX</span>
+
+                    <div>
+
+                        <h4 class="text-xs font-bold text-slate-200 mb-0.5">Compose Daemon</h4>
+
+                        <p class="text-[11px] text-slate-500 leading-normal">Provision docker-compose and package-managers via CLI command chains.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- OPTION A: QUICK START -->
+
+        <section class="bg-space-850 border border-space-800 rounded-[32px] p-8 md:p-10 shadow-lg relative">
+
+            <div class="flex items-center justify-between mb-8">
+
+                <div class="flex items-center gap-3">
+
+                    <div class="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+
+                        <span class="w-2 h-2 bg-emerald-400 rounded-full"></span>
+
+                    </div>
+
+                    <h3 class="text-base md:text-lg font-bold text-white tracking-tight font-display">🟢 OPTION A: Quick Start</h3>
+
+                </div>
+
+                <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest bg-emerald-500/5 border border-emerald-500/10 px-2 py-0.5 rounded">Beginner Friendly</span>
+
+            </div>
+
+
+
+            <div class="space-y-6 relative border-l border-space-800/80 ml-4 pl-8">
+
+                <!-- Step 1 -->
+
+                <div class="relative">
+
+                    <div class="absolute -left-[45px] top-0 w-[26px] h-[26px] rounded-full bg-space-900 border-2 border-space-800 flex items-center justify-center text-[11px] font-bold text-blue-400">1</div>
+
+                    <h4 class="text-sm font-bold text-white mb-2 font-display">Download and Extract</h4>
+
+                    <p class="text-xs text-slate-400 leading-relaxed">
+
+                        Secure the stable build package <span class="text-slate-200 font-mono text-[11px] bg-space-900 px-1.5 py-0.5 rounded border border-space-800">GridStorage_Server.zip</span>, and extract assets directly to a folder on your computer.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- Step 2 -->
+
+                <div class="relative">
+
+                    <div class="absolute -left-[45px] top-0 w-[26px] h-[26px] rounded-full bg-space-900 border-2 border-space-800 flex items-center justify-center text-[11px] font-bold text-blue-400">2</div>
+
+                    <h4 class="text-sm font-bold text-white mb-2 font-display">Run the Startup Script</h4>
+
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+
+                        Launch the background service scripts designed specifically for your OS:
+
+                    </p>
+
+                    <div class="space-y-2">
+
+                        <div class="bg-space-900 border border-space-800/60 rounded-xl p-3 flex justify-between items-center text-xs">
+
+                            <span class="font-bold text-slate-300 font-display">Windows</span>
+
+                            <code class="font-mono text-blue-400 text-[11px] bg-space-850 px-2 py-1 rounded">Double-click start_server.bat</code>
+
+                        </div>
+
+                        <div class="bg-space-900 border border-space-800/60 rounded-xl p-3 flex justify-between items-center text-xs">
+
+                            <span class="font-bold text-slate-300 font-display">Mac / Linux</span>
+
+                            <code class="font-mono text-blue-400 text-[11px] bg-space-850 px-2 py-1 rounded">bash start_server.sh</code>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Step 3 -->
+
+                <div class="relative">
+
+                    <div class="absolute -left-[45px] top-0 w-[26px] h-[26px] rounded-full bg-space-900 border-2 border-space-800 flex items-center justify-center text-[11px] font-bold text-blue-400">3</div>
+
+                    <h4 class="text-sm font-bold text-white mb-2 font-display">Connect Your App</h4>
+
+                    <p class="text-xs text-slate-400 leading-relaxed mb-4">
+
+                        The script automatically verifies dependencies, spawns the server, and prints your custom <strong class="text-blue-400">Local IP Address</strong> in your shell workspace window.
+
+                    </p>
+
+                    <div class="bg-space-900/60 border border-space-800/80 rounded-2xl p-5 space-y-3">
+
+                        <div class="flex gap-2 items-center text-[11px] text-slate-300 font-semibold border-b border-space-800 pb-2">
+
+                            <svg class="w-4 h-4 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+
+                            </svg>
+
+                            Default Workspace Nodes
+
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 text-xs font-mono">
+
+                            <div>
+
+                                <span class="text-[10px] text-slate-500 block">EMAIL ADDRESS</span>
+
+                                <span class="text-slate-200">admin@gridstorage.com</span>
+
+                            </div>
+
+                            <div>
+
+                                <span class="text-[10px] text-slate-500 block">PASSWORD</span>
+
+                                <span class="text-slate-200">admin123</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- OPTION B: ADVANCED SETUP -->
+
+        <section class="bg-space-850/80 border border-space-800 rounded-[32px] p-8 md:p-10 shadow-lg relative">
+
+            <div class="flex items-center justify-between mb-8">
+
+                <div class="flex items-center gap-3">
+
+                    <div class="w-8 h-8 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400">
+
+                        <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+
+                        </svg>
+
+                    </div>
+
+                    <h3 class="text-base md:text-lg font-bold text-white tracking-tight font-display">🛠️ OPTION B: Advanced Setup</h3>
+
+                </div>
+
+                <span class="text-[10px] font-bold text-violet-400 uppercase tracking-widest bg-violet-500/5 border border-violet-500/10 px-2 py-0.5 rounded">Power Users</span>
+
+            </div>
+
+
+
+            <div class="space-y-8 relative border-l border-space-800/85 ml-4 pl-8">
+
+                <!-- Step 1 -->
+
+                <div class="relative">
+
+                    <div class="absolute -left-[45px] top-0 w-[26px] h-[26px] rounded-full bg-space-900 border-2 border-space-800 flex items-center justify-center text-[11px] font-bold text-violet-400">1</div>
+
+                    <h4 class="text-sm font-bold text-white mb-2 font-display">Secure Your Node</h4>
+
+                    <p class="text-xs text-slate-400 leading-relaxed mb-4">
+
+                        Extract files, and open configuration settings inside a text editor to update default security keys:
+
+                    </p>
+
+
+
+                    <div class="space-y-4 font-mono text-[11px]">
+
+                        <div class="bg-space-900 border border-space-800 rounded-2xl overflow-hidden">
+
+                            <div class="bg-space-850 px-4 py-2 border-b border-space-800 flex justify-between text-[10px] text-slate-500">
+
+                                <span>docker-compose.yml</span>
+
+                                <span class="uppercase">YAML</span>
+
+                            </div>
+
+                            <div class="p-4 overflow-x-auto text-slate-300">
+
+                                <span class="text-slate-500"># Set your personal secret keys</span><br/>
+
+                                <span class="text-slate-400">POSTGRES_PASSWORD:</span> <span class="text-emerald-400">"strong_postgres_password"</span><br/>
+
+                                <span class="text-slate-400">PGRST_JWT_SECRET:</span> <span class="text-emerald-400">"your-custom-jwt-secret-min-32-chars"</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Step 2 -->
+
+                <div class="relative">
+
+                    <div class="absolute -left-[45px] top-0 w-[26px] h-[26px] rounded-full bg-space-900 border-2 border-space-800 flex items-center justify-center text-[11px] font-bold text-violet-400">2</div>
+
+                    <h4 class="text-sm font-bold text-white mb-2 font-display">Start the Server Manually</h4>
+
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+
+                        Open your terminal inside the server workspace block and release the docker orchestrator:
+
+                    </p>
+
+                    <div class="bg-space-900 border border-space-800 rounded-2xl p-4 font-mono text-[11px] text-slate-300 flex justify-between items-center">
+
+                        <code>docker-compose up -d</code>
+
+                        <span class="text-slate-600 text-[10px]">EXECUTE</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- TROUBLESHOOTING -->
+
+        <section class="bg-space-850/40 border border-space-800 rounded-[32px] p-8 md:p-10 shadow-sm hover:border-space-700 transition-colors">
+
+            <div class="flex items-center gap-3 mb-8">
+
+                <div class="w-8 h-8 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400">
+
+                    <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+
+                    </svg>
+
+                </div>
+
+                <h3 class="text-base md:text-lg font-bold text-white tracking-tight font-display">🛑 Troubleshooting & FAQ</h3>
+
+            </div>
+
+
+
+            <div class="space-y-4">
+
+                <div class="bg-space-900/40 border border-space-800/40 rounded-2xl p-6">
+
+                    <h4 class="text-sm font-bold text-slate-200 mb-2">"Server is Unreachable"</h4>
+
+                    <p class="text-xs text-slate-400 leading-relaxed">
+
+                        Verify your phone and primary server machine are on the exact same local router space. If on Windows, ensure Windows Defender Firewall allows raw inbound requests through TCP Port 3000.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
     </main>
 
+
+
+    <footer class="border-t border-space-800 bg-space-950 py-16 text-center text-xs text-slate-500">
+
+        <div class="max-w-3xl mx-auto px-6 space-y-3">
+
+            <p class="font-bold text-[10px] tracking-[0.4em] uppercase text-blue-500">GRIDSTORAGE ENTERPRISE DATA CLUSTER</p>
+
+            <p class="font-medium text-slate-600">Secure, locally confined data nodes keeping asset schemas local to your systems.</p>
+
+            <p class="text-[10px] text-slate-700/80 mt-6">&copy; 2026 Grid Storage Inc. All rights reserved.</p>
+
+        </div>
+
+    </footer>
+
 </body>
-</html>
+
+</html>"
+
+taki kod wyglada dobrze?
