@@ -1,36 +1,69 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GridStorage - Twój prywatny magazyn danych</title>
+    <title>GridStorage Server</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        appBg: '#0F172A',     // Twoje scaffoldBg
+                        cardBg: '#1E293B',    // Twoje headerBg/CardBg
+                        primary: '#2563EB',   // Twoje primaryBlue
+                        textMain: '#FFFFFF',
+                        textSub: '#94A3B8'    // Twoje textSecondary
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans">
+<body class="bg-appBg text-textMain antialiased min-h-screen">
 
-    <div class="max-w-4xl mx-auto px-6 py-16">
+    <main class="max-w-2xl mx-auto px-6 py-20">
         <header class="text-center mb-16">
-            <h1 class="text-5xl font-bold text-blue-600 mb-4">GridStorage</h1>
-            <p class="text-xl text-gray-600">Pełna kontrola nad Twoim inwentarzem. Prywatnie, bezpiecznie, na Twoich zasadach.</p>
+            <div class="w-20 h-20 bg-cardBg rounded-3xl mx-auto mb-6 flex items-center justify-center border border-slate-700">
+                <svg class="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6z"/></svg>
+            </div>
+            <h1 class="text-4xl font-bold mb-4 tracking-tight">GridStorage Server</h1>
+            <p class="text-textSub text-lg">Self-hosted infrastructure for your inventory.</p>
         </header>
 
-        <section class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 mb-10">
-            <h2 class="text-2xl font-bold mb-4">Szybki start</h2>
-            <ol class="list-decimal list-inside space-y-3 text-gray-700">
-                <li>Pobierz paczkę serwerową poniżej.</li>
-                <li>Wypakuj pliki na swoim komputerze lub NAS.</li>
-                <li>Uruchom skrypt (Windows: <code>start_server.bat</code>, Mac/Linux: <code>start_server.sh</code>).</li>
-                <li>Połącz się z aplikacją mobilną używając adresu IP wyświetlonego w konsoli.</li>
-            </ol>
-        </section>
-
-        <div class="text-center">
-            <a href="GridStorage_Server.zip" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 shadow-lg">
-                Pobierz GridStorage Server (ZIP)
+        <div class="bg-cardBg border border-slate-700 p-8 rounded-[32px] shadow-2xl mb-8">
+            <h2 class="text-xl font-bold mb-6">Deployment Package</h2>
+            <p class="text-textSub mb-8 leading-relaxed">
+                Download the official server deployment bundle. This package includes the configuration files required to run your private inventory node.
+            </p>
+            
+            <a href="GridStorage_Server.zip" 
+               class="flex items-center justify-center w-full py-5 bg-primary hover:bg-blue-700 text-white font-bold rounded-2xl transition-all duration-300 shadow-lg shadow-blue-900/20">
+               Download Server Bundle
             </a>
-            <p class="mt-4 text-sm text-gray-500">Wersja v1.0.0 | Wymaga Docker Desktop</p>
         </div>
-    </div>
+
+        <section class="bg-cardBg/50 border border-slate-800 p-8 rounded-[32px]">
+            <h3 class="text-lg font-bold mb-6">Quick Setup</h3>
+            <div class="space-y-6">
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-2xl bg-appBg flex items-center justify-center text-primary font-bold border border-slate-700">1</div>
+                    <div>
+                        <h4 class="font-bold">Extract</h4>
+                        <p class="text-sm text-textSub mt-1">Unzip the package to your preferred location.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-2xl bg-appBg flex items-center justify-center text-primary font-bold border border-slate-700">2</div>
+                    <div>
+                        <h4 class="font-bold">Launch</h4>
+                        <p class="text-sm text-textSub mt-1">Run <code>start_server.bat</code> or <code>.sh</code>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
 </body>
 </html>
