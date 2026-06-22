@@ -20,8 +20,8 @@
                         mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
-                        appBg: '#020617',     // slate-950
-                        cardBg: '#0f172a',    // slate-900
+                        appBg: '#020617',      // slate-950
+                        cardBg: '#0f172a',     // slate-900
                         cardBorder: '#1e293b',// slate-800
                         primary: '#2563eb',   // blue-600
                     }
@@ -86,7 +86,7 @@
                         <li class="flex items-center gap-3"><span class="text-emerald-400">✔</span> Instant setup</li>
                         <li class="flex items-center gap-3 text-slate-500">✖ No multi-device sync</li>
                     </ul>
-                    <a href="https://play.google.com" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 px-6 rounded-xl transition-all">
+                    <a href="https://play.google.com/store/apps/details?id=com.pryhodskyimykola.gridstorage" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 px-6 rounded-xl transition-all">
                         Download App
                     </a>
                 </div>
@@ -101,8 +101,7 @@
                     <ul class="space-y-3 text-sm text-slate-300 mb-8 flex-1">
                         <li class="flex items-center gap-3"><span class="text-blue-400">✔</span> Multi-device live sync</li>
                         <li class="flex items-center gap-3"><span class="text-blue-400">✔</span> Self-hosted database</li>
-                        <li class="flex items-center gap-3"><span class="text-blue-400">✔</span> Total data ownership</li>
-                        <li class="flex items-center gap-3"><span class="text-blue-400">✔</span> Unlimited scaling</li>
+                        <li class="flex items-center gap-3"><span class="text-blue-400">✔</span> Mobile & Web Dashboard</li> <li class="flex items-center gap-3"><span class="text-blue-400">✔</span> Unlimited scaling</li>
                     </ul>
                     <a href="#server-setup" class="w-full inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 px-6 rounded-xl transition-all shadow-lg shadow-blue-500/20">
                         View Server Setup
@@ -208,7 +207,7 @@
                                 The script will automatically check your system, start the server, and display your <strong class="text-emerald-400">Local IP Address</strong>.
                             </p>
                             <ol class="list-decimal list-inside text-sm text-slate-400 space-y-2 mb-4">
-                                <li>Open the GridStorage mobile app.</li>
+                                <li>Open the GridStorage mobile app <strong>or access your Web Dashboard</strong>.</li>
                                 <li>Go to <strong>Server Configuration</strong> and type the URL exactly as shown (e.g., <code>http://192.168.0.50:3000</code>).</li>
                                 <li>Tap <strong>Save & Verify Connection</strong>.</li>
                             </ol>
@@ -314,6 +313,12 @@
             <section class="bg-cardBg/40 border border-cardBorder rounded-[28px] sm:rounded-[32px] p-6 sm:p-8">
                 <h3 class="text-lg font-bold text-white mb-4">🛑 Troubleshooting & FAQ</h3>
                 <div class="space-y-4">
+                    
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-200">Can I access my inventory on a computer (Web Version)?</h4>
+                        <p class="text-xs text-slate-400 mt-1">Yes! The Enterprise Node supports a Web deployment. You can access your full inventory dashboard directly from any web browser on your PC or Mac, fully synced with your mobile app.</p>
+                    </div>
+
                     <div>
                         <h4 class="text-sm font-bold text-slate-200">"Server is Unreachable"</h4>
                         <p class="text-xs text-slate-400 mt-1">Ensure your phone and your computer are connected to the exact same Wi-Fi network. If you are on Windows, ensure your Windows Defender Firewall allows inbound traffic on TCP Port 3000.</p>
