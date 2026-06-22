@@ -101,7 +101,8 @@
                     <ul class="space-y-3 text-sm text-slate-300 mb-8 flex-1">
                         <li class="flex items-center gap-3"><span class="text-blue-400">✔</span> Multi-device live sync</li>
                         <li class="flex items-center gap-3"><span class="text-blue-400">✔</span> Self-hosted database</li>
-                        <li class="flex items-center gap-3"><span class="text-blue-400">✔</span> Mobile & Web Dashboard</li> <li class="flex items-center gap-3"><span class="text-blue-400">✔</span> Unlimited scaling</li>
+                        <li class="flex items-center gap-3"><span class="text-blue-400">✔</span> Mobile & Web Dashboard</li>
+                        <li class="flex items-center gap-3"><span class="text-blue-400">✔</span> Unlimited scaling</li>
                     </ul>
                     <a href="#server-setup" class="w-full inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 px-6 rounded-xl transition-all shadow-lg shadow-blue-500/20">
                         View Server Setup
@@ -110,8 +111,30 @@
             </div>
         </header>
 
-        <div class="max-w-4xl mx-auto px-6 py-12">
-            <div class="h-px w-full bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-12">
+            <div class="relative bg-cardBg border border-blue-500/30 rounded-[32px] p-8 sm:p-12 text-center overflow-hidden shadow-2xl shadow-blue-900/10">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-24 bg-blue-600/10 blur-[50px] rounded-full pointer-events-none"></div>
+                
+                <div class="inline-flex items-center justify-center gap-4 mb-6">
+                    <div class="p-3.5 bg-slate-800/50 rounded-2xl border border-slate-700 shadow-inner">
+                        <svg class="w-7 h-7 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                        </svg>
+                    </div>
+                    <div class="w-10 h-[2px] bg-gradient-to-r from-slate-700 to-blue-500/50 rounded-full"></div>
+                    <div class="p-3.5 bg-blue-600/10 rounded-2xl border border-blue-500/20 shadow-inner shadow-blue-500/10">
+                        <svg class="w-7 h-7 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                        </svg>
+                    </div>
+                </div>
+                
+                <h2 class="text-2xl sm:text-3xl font-bold text-white font-display mb-4 relative z-10">Cross-Platform Experience</h2>
+                <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed relative z-10">
+                    The Enterprise Node doesn't just sync your mobile devices. It instantly deploys a <strong>fully-featured Web Dashboard</strong>. Manage your inventory from any PC, Mac, or tablet browser within your network—no installation required.
+                </p>
+            </div>
         </div>
 
         <main id="server-setup" class="max-w-3xl mx-auto px-4 sm:px-6 pb-24 space-y-6 sm:space-y-8 scroll-mt-8">
@@ -207,9 +230,9 @@
                                 The script will automatically check your system, start the server, and display your <strong class="text-emerald-400">Local IP Address</strong>.
                             </p>
                             <ol class="list-decimal list-inside text-sm text-slate-400 space-y-2 mb-4">
-                                <li>Open the GridStorage mobile app <strong>or access your Web Dashboard</strong>.</li>
-                                <li>Go to <strong>Server Configuration</strong> and type the URL exactly as shown (e.g., <code>http://192.168.0.50:3000</code>).</li>
-                                <li>Tap <strong>Save & Verify Connection</strong>.</li>
+                                <li>Open the GridStorage mobile app <strong>or type the URL into your Web Browser</strong>.</li>
+                                <li>If on mobile, go to <strong>Server Configuration</strong> and type the URL exactly as shown (e.g., <code>http://192.168.0.50:3000</code>).</li>
+                                <li>Log in using the default credentials.</li>
                             </ol>
                             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
                                 <span class="text-xs text-slate-500 block mb-2 font-bold uppercase">Default Logins</span>
@@ -313,12 +336,6 @@
             <section class="bg-cardBg/40 border border-cardBorder rounded-[28px] sm:rounded-[32px] p-6 sm:p-8">
                 <h3 class="text-lg font-bold text-white mb-4">🛑 Troubleshooting & FAQ</h3>
                 <div class="space-y-4">
-                    
-                    <div>
-                        <h4 class="text-sm font-bold text-slate-200">Can I access my inventory on a computer (Web Version)?</h4>
-                        <p class="text-xs text-slate-400 mt-1">Yes! The Enterprise Node supports a Web deployment. You can access your full inventory dashboard directly from any web browser on your PC or Mac, fully synced with your mobile app.</p>
-                    </div>
-
                     <div>
                         <h4 class="text-sm font-bold text-slate-200">"Server is Unreachable"</h4>
                         <p class="text-xs text-slate-400 mt-1">Ensure your phone and your computer are connected to the exact same Wi-Fi network. If you are on Windows, ensure your Windows Defender Firewall allows inbound traffic on TCP Port 3000.</p>
