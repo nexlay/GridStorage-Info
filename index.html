@@ -153,6 +153,154 @@
             </div>
         </header>
 
+        <!-- Custom Promo Video Section -->
+        <section class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-16 reveal">
+            <div class="text-center mb-10">
+                <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold uppercase tracking-wider rounded-lg border border-blue-500/20">Product Tour</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white font-display mt-3">See GridStorage in Action</h2>
+                <p class="text-slate-400 text-sm mt-2 max-w-lg mx-auto">Discover private, local-first inventory tracking and self-hosted live synchronization.</p>
+            </div>
+
+            <div class="relative bg-cardBg border border-cardBorder rounded-[32px] p-2.5 sm:p-4 shadow-2xl overflow-hidden max-w-3xl mx-auto">
+                <!-- Glowing ambient background lights -->
+                <div class="absolute -top-12 -left-12 w-48 h-48 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <!-- Custom Video Player Container -->
+                <div class="relative aspect-video w-full rounded-[24px] overflow-hidden bg-slate-950 border border-slate-800/80 group">
+                    
+                    <!-- HTML5 Video element configured to avoid native full screen and display inline -->
+                    <video id="promoVideo" class="w-full h-full object-cover cursor-pointer" playsinline webkit-playsinline preload="metadata">
+                        <source src="promo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+
+                    <!-- Interactive Play Overlay / Poster (Pure HTML) -->
+                    <div id="videoPlayOverlay" class="absolute inset-0 bg-slate-950/85 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center transition-all duration-500 z-20 cursor-pointer">
+                        <div class="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none"></div>
+                        
+                        <!-- Pulsing play icon -->
+                        <div class="relative mb-6">
+                            <div class="absolute inset-0 bg-blue-500/20 rounded-full blur-md animate-pulse scale-125"></div>
+                            <button class="relative w-16 h-16 sm:w-20 sm:h-20 bg-blue-600 hover:bg-blue-500 hover:scale-105 active:scale-95 text-white rounded-full flex items-center justify-center transition-all shadow-lg shadow-blue-500/30 border border-blue-400/30">
+                                <svg class="w-7 h-7 sm:w-9 sm:h-9 translate-x-0.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <h3 class="text-lg sm:text-xl font-bold text-white mb-2 relative z-10 font-display">GridStorage Tour</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm max-w-md relative z-10">Watch our 18-second overview showcasing local tags, offline edits, and seamless self-hosted cloud synchronization.</p>
+                    </div>
+
+                    <!-- Custom Interactive Fallback Demo (Plays if the physical promo.mp4 isn't found) -->
+                    <div id="videoFallbackDemo" class="absolute inset-0 bg-slate-950 flex flex-col items-center justify-center p-6 text-center transition-all duration-500 z-10 hidden">
+                        <div class="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
+                        
+                        <!-- Mini Mock UI Slideshow/Animation Container -->
+                        <div class="w-full max-w-sm bg-cardBg/90 border border-slate-800 rounded-2xl p-5 shadow-2xl relative overflow-hidden transition-all duration-500">
+                            <!-- Header -->
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    <span class="text-xs font-mono text-slate-400 tracking-wider uppercase">Active Sync Connection</span>
+                                </div>
+                                <span class="text-[10px] font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">Node: Local IP</span>
+                            </div>
+
+                            <!-- Animated step text -->
+                            <div class="space-y-3 text-left">
+                                <div id="demoStep1" class="flex items-center gap-3 text-sm text-slate-400 transition-all duration-300">
+                                    <span class="w-5 h-5 rounded-full bg-slate-800 flex items-center justify-center text-xs font-mono text-blue-400 font-bold border border-slate-700">1</span>
+                                    <span>Establishing handshakes with self-hosted node...</span>
+                                </div>
+                                <div id="demoStep2" class="flex items-center gap-3 text-sm text-slate-400 transition-all duration-300 opacity-40">
+                                    <span class="w-5 h-5 rounded-full bg-slate-800 flex items-center justify-center text-xs font-mono text-blue-400 font-bold border border-slate-700">2</span>
+                                    <span>Syncing visual assets and colored tags...</span>
+                                </div>
+                                <div id="demoStep3" class="flex items-center gap-3 text-sm text-slate-400 transition-all duration-300 opacity-40">
+                                    <span class="w-5 h-5 rounded-full bg-slate-800 flex items-center justify-center text-xs font-mono text-blue-400 font-bold border border-slate-700">3</span>
+                                    <span>GridStorage successfully updated and ready!</span>
+                                </div>
+                            </div>
+
+                            <!-- Visual Card Mockup -->
+                            <div class="mt-5 pt-4 border-t border-slate-800 flex items-center gap-3.5 bg-slate-900/40 p-3 rounded-xl border border-slate-800/60 opacity-0 transform translate-y-2 transition-all duration-500" id="demoMockCard">
+                                <div class="w-10 h-10 rounded-lg bg-blue-600/10 border border-blue-500/20 flex items-center justify-center shrink-0">
+                                    <svg class="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                    </svg>
+                                </div>
+                                <div class="text-left">
+                                    <h4 class="text-xs font-bold text-white">AA Batteries</h4>
+                                    <p class="text-[10px] text-slate-500">Box A2 • Tag: <span class="text-emerald-400 font-semibold">Ready</span></p>
+                                </div>
+                                <div class="ml-auto flex items-center gap-1.5">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-lg shadow-emerald-400/50"></span>
+                                    <span class="text-[10px] font-mono text-emerald-400 font-bold">Synced</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 flex items-center justify-center gap-3">
+                            <span class="text-[11px] font-mono text-slate-500">Demo presentation mode</span>
+                            <button id="restartDemoBtn" class="text-xs font-semibold text-blue-400 hover:text-blue-300 underline focus:outline-none">Replay Tour</button>
+                        </div>
+                    </div>
+
+                    <!-- Custom Player Controls Bar (No fullscreen options) -->
+                    <div id="videoControls" class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/95 via-slate-950/70 to-transparent p-4 flex flex-col gap-3 transition-all duration-300 opacity-0 group-hover:opacity-100 focus-within:opacity-100 z-10 pointer-events-none">
+                        
+                        <!-- Timeline Progress slider -->
+                        <div class="flex items-center gap-3 w-full pointer-events-auto">
+                            <span id="currentTime" class="text-[10px] sm:text-xs font-mono text-slate-400 shrink-0">0:00</span>
+                            <div class="relative flex-1 h-1.5 bg-slate-800/80 hover:h-2 rounded-full cursor-pointer overflow-hidden transition-all group/timeline" id="timelineContainer">
+                                <div id="timelineProgress" class="absolute left-0 top-0 bottom-0 bg-blue-500 rounded-full w-0 transition-all duration-75"></div>
+                                <div id="timelineHover" class="absolute left-0 top-0 bottom-0 bg-white/20 rounded-full w-0 pointer-events-none"></div>
+                            </div>
+                            <span id="durationTime" class="text-[10px] sm:text-xs font-mono text-slate-400 shrink-0">0:18</span>
+                        </div>
+
+                        <!-- Action controls -->
+                        <div class="flex items-center justify-between w-full pointer-events-auto">
+                            <div class="flex items-center gap-4">
+                                <!-- Play/Pause button -->
+                                <button id="playPauseBtn" class="text-slate-300 hover:text-white transition-colors focus:outline-none" aria-label="Play/Pause">
+                                    <svg id="playIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                    <svg id="pauseIcon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                                    </svg>
+                                </button>
+
+                                <!-- Volume slider / Mute button -->
+                                <div class="flex items-center gap-2 group/volume">
+                                    <button id="muteBtn" class="text-slate-300 hover:text-white transition-colors focus:outline-none" aria-label="Mute/Unmute">
+                                        <svg id="volumeUpIcon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M12 18.75V5.25L7.75 9.5H4.5v5h3.25L12 18.75z" />
+                                        </svg>
+                                        <svg id="volumeMuteIcon" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636m12.728 12.728L5.636 5.636M12 18.75V5.25L7.75 9.5H4.5v5h3.25L12 18.75z" />
+                                        </svg>
+                                    </button>
+                                    <div class="w-0 overflow-hidden group-hover/volume:w-16 focus-within:w-16 transition-all duration-300 flex items-center">
+                                        <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="1" class="w-14 h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-500" aria-label="Volume">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Quality pill -->
+                            <div class="flex items-center">
+                                <span class="text-[9px] font-mono font-bold tracking-wider uppercase bg-slate-800/80 border border-slate-700/50 px-2 py-0.5 rounded text-slate-400">1080p HD</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <div class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-12 reveal">
             <div class="relative bg-cardBg border border-blue-500/30 rounded-[32px] p-8 sm:p-12 text-center overflow-hidden shadow-2xl shadow-blue-900/10">
                 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
@@ -476,6 +624,278 @@
             document.querySelectorAll('.reveal').forEach((el) => {
                 observer.observe(el);
             });
+
+            // ==========================================
+            // CUSTOM INTERACTIVE VIDEO PLAYER CONTROLS
+            // ==========================================
+            const video = document.getElementById('promoVideo');
+            const playOverlay = document.getElementById('videoPlayOverlay');
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const playIcon = document.getElementById('playIcon');
+            const pauseIcon = document.getElementById('pauseIcon');
+            const muteBtn = document.getElementById('muteBtn');
+            const volumeUpIcon = document.getElementById('volumeUpIcon');
+            const volumeMuteIcon = document.getElementById('volumeMuteIcon');
+            const volumeSlider = document.getElementById('volumeSlider');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationTimeEl = document.getElementById('durationTime');
+            const timelineProgress = document.getElementById('timelineProgress');
+            const timelineHover = document.getElementById('timelineHover');
+            const timelineContainer = document.getElementById('timelineContainer');
+            
+            // Fallback simulation selectors
+            const fallbackDemo = document.getElementById('videoFallbackDemo');
+            const demoStep1 = document.getElementById('demoStep1');
+            const demoStep2 = document.getElementById('demoStep2');
+            const demoStep3 = document.getElementById('demoStep3');
+            const demoMockCard = document.getElementById('demoMockCard');
+            const restartDemoBtn = document.getElementById('restartDemoBtn');
+
+            let hasVideoError = false;
+            let demoTimer1 = null;
+            let demoTimer2 = null;
+            let demoTimer3 = null;
+            let demoTimer4 = null;
+
+            if (video) {
+                // Prevent default double-click fullscreen
+                video.addEventListener('dblclick', (e) => {
+                    e.preventDefault();
+                });
+
+                // Prevent right click (context menu) to disable default browser "Enter Full Screen" controls
+                video.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                });
+
+                // If the video can't be loaded (e.g., 404 in local dev), catch it to run the fallback tour
+                video.addEventListener('error', () => {
+                    hasVideoError = true;
+                    console.warn("GridStorage video file 'promo.mp4' not found. Enabling premium interactive presentation demo mode.");
+                });
+
+                // Helper to format seconds (e.g. 18 -> 0:18)
+                const formatTime = (timeInSeconds) => {
+                    if (isNaN(timeInSeconds) || !isFinite(timeInSeconds)) return "0:00";
+                    const minutes = Math.floor(timeInSeconds / 60);
+                    const seconds = Math.floor(timeInSeconds % 60);
+                    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                };
+
+                // Run the animated presentation demo as a high-fidelity visual simulation
+                const runFallbackDemo = () => {
+                    if (!fallbackDemo) return;
+                    
+                    // Show fallback container, hide poster overlay and video element
+                    fallbackDemo.classList.remove('hidden');
+                    if (playOverlay) playOverlay.classList.add('opacity-0', 'pointer-events-none');
+                    video.classList.add('hidden');
+
+                    // Reset demo states
+                    const resetDemoStyles = () => {
+                        if (demoStep1) { demoStep1.classList.remove('opacity-100', 'text-white'); demoStep1.classList.add('opacity-40'); }
+                        if (demoStep2) { demoStep2.classList.remove('opacity-100', 'text-white'); demoStep2.classList.add('opacity-40'); }
+                        if (demoStep3) { demoStep3.classList.remove('opacity-100', 'text-white'); demoStep3.classList.add('opacity-40'); }
+                        if (demoMockCard) {
+                            demoMockCard.classList.remove('opacity-100', 'translate-y-0');
+                            demoMockCard.classList.add('opacity-0', 'translate-y-2');
+                        }
+                        
+                        // Reset fake controls
+                        if (currentTimeEl) currentTimeEl.textContent = "0:00";
+                        if (durationTimeEl) durationTimeEl.textContent = "0:18";
+                        if (timelineProgress) timelineProgress.style.width = "0%";
+                    };
+
+                    resetDemoStyles();
+
+                    // Clear any active timers
+                    clearTimeout(demoTimer1);
+                    clearTimeout(demoTimer2);
+                    clearTimeout(demoTimer3);
+                    clearTimeout(demoTimer4);
+
+                    // Step 1 animation
+                    demoTimer1 = setTimeout(() => {
+                        if (demoStep1) {
+                            demoStep1.classList.remove('opacity-40');
+                            demoStep1.classList.add('opacity-100', 'text-white');
+                        }
+                        if (currentTimeEl) currentTimeEl.textContent = "0:04";
+                        if (timelineProgress) timelineProgress.style.width = "22%";
+                    }, 500);
+
+                    // Step 2 animation
+                    demoTimer2 = setTimeout(() => {
+                        if (demoStep2) {
+                            demoStep2.classList.remove('opacity-40');
+                            demoStep2.classList.add('opacity-100', 'text-white');
+                        }
+                        if (currentTimeEl) currentTimeEl.textContent = "0:09";
+                        if (timelineProgress) timelineProgress.style.width = "50%";
+                    }, 2500);
+
+                    // Step 3 animation
+                    demoTimer3 = setTimeout(() => {
+                        if (demoStep3) {
+                            demoStep3.classList.remove('opacity-40');
+                            demoStep3.classList.add('opacity-100', 'text-white');
+                        }
+                        if (currentTimeEl) currentTimeEl.textContent = "0:14";
+                        if (timelineProgress) timelineProgress.style.width = "78%";
+                    }, 4500);
+
+                    // Mock Card synced reveal
+                    demoTimer4 = setTimeout(() => {
+                        if (demoMockCard) {
+                            demoMockCard.classList.remove('opacity-0', 'translate-y-2');
+                            demoMockCard.classList.add('opacity-100', 'translate-y-0');
+                        }
+                        if (currentTimeEl) currentTimeEl.textContent = "0:18";
+                        if (timelineProgress) timelineProgress.style.width = "100%";
+                    }, 5500);
+                };
+
+                // Toggle play/pause
+                const togglePlay = () => {
+                    // Check if we need to fall back to the demo slideshow
+                    if (hasVideoError) {
+                        runFallbackDemo();
+                        return;
+                    }
+
+                    if (video.paused) {
+                        video.play().then(() => {
+                            if (playOverlay) playOverlay.classList.add('opacity-0', 'pointer-events-none');
+                            if (playIcon) playIcon.classList.add('hidden');
+                            if (pauseIcon) pauseIcon.classList.remove('hidden');
+                        }).catch(err => {
+                            console.log("Play failed, starting HTML presentation demo instead:", err);
+                            runFallbackDemo();
+                        });
+                    } else {
+                        video.pause();
+                        if (playIcon) playIcon.classList.remove('hidden');
+                        if (pauseIcon) pauseIcon.classList.add('hidden');
+                    }
+                };
+
+                // Bind clicks to video and play buttons
+                video.addEventListener('click', togglePlay);
+                
+                if (playOverlay) {
+                    playOverlay.addEventListener('click', togglePlay);
+                }
+
+                if (playPauseBtn) {
+                    playPauseBtn.addEventListener('click', togglePlay);
+                }
+
+                if (restartDemoBtn) {
+                    restartDemoBtn.addEventListener('click', runFallbackDemo);
+                }
+
+                // Update timeline progress & current time
+                video.addEventListener('timeupdate', () => {
+                    if (hasVideoError) return; // Managed by demo timers
+                    const current = video.currentTime;
+                    const duration = video.duration || 0;
+                    
+                    if (currentTimeEl) {
+                        currentTimeEl.textContent = formatTime(current);
+                    }
+                    
+                    if (durationTimeEl && duration > 0) {
+                        durationTimeEl.textContent = formatTime(duration);
+                    }
+                    
+                    if (timelineProgress && duration > 0) {
+                        const percentage = (current / duration) * 100;
+                        timelineProgress.style.width = `${percentage}%`;
+                    }
+                });
+
+                // Initialize duration when metadata loads successfully
+                video.addEventListener('loadedmetadata', () => {
+                    if (durationTimeEl) {
+                        durationTimeEl.textContent = formatTime(video.duration);
+                    }
+                });
+
+                // Mute / Unmute Volume controls
+                const toggleMute = () => {
+                    video.muted = !video.muted;
+                    updateVolumeUI();
+                };
+
+                const updateVolumeUI = () => {
+                    if (video.muted || video.volume === 0) {
+                        if (volumeUpIcon) volumeUpIcon.classList.add('hidden');
+                        if (volumeMuteIcon) volumeMuteIcon.classList.remove('hidden');
+                        if (volumeSlider) volumeSlider.value = '0';
+                    } else {
+                        if (volumeUpIcon) volumeUpIcon.classList.remove('hidden');
+                        if (volumeMuteIcon) volumeMuteIcon.classList.add('hidden');
+                        if (volumeSlider) volumeSlider.value = String(video.volume);
+                    }
+                };
+
+                if (muteBtn) {
+                    muteBtn.addEventListener('click', toggleMute);
+                }
+
+                if (volumeSlider) {
+                    volumeSlider.addEventListener('input', (e) => {
+                        const target = e.target;
+                        video.volume = parseFloat(target.value);
+                        video.muted = (video.volume === 0);
+                        updateVolumeUI();
+                    });
+                }
+
+                // Seeking timeline clicking action
+                if (timelineContainer) {
+                    timelineContainer.addEventListener('click', (e) => {
+                        if (hasVideoError) return; // Seek disabled in presentation mode
+                        const rect = timelineContainer.getBoundingClientRect();
+                        const clickX = e.clientX - rect.left;
+                        const width = rect.width;
+                        const percentage = clickX / width;
+                        const duration = video.duration || 0;
+                        
+                        if (duration > 0) {
+                            video.currentTime = percentage * duration;
+                        }
+                    });
+
+                    // Hover progress line styling
+                    timelineContainer.addEventListener('mousemove', (e) => {
+                        if (hasVideoError) return;
+                        const rect = timelineContainer.getBoundingClientRect();
+                        const hoverX = e.clientX - rect.left;
+                        const width = rect.width;
+                        if (timelineHover) {
+                            timelineHover.style.width = `${(hoverX / width) * 100}%`;
+                        }
+                    });
+
+                    timelineContainer.addEventListener('mouseleave', () => {
+                        if (timelineHover) {
+                            timelineHover.style.width = '0';
+                        }
+                    });
+                }
+
+                // Reset state when video reaches the end
+                video.addEventListener('ended', () => {
+                    if (playOverlay) {
+                        playOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                    }
+                    if (playIcon) playIcon.classList.remove('hidden');
+                    if (pauseIcon) pauseIcon.classList.add('hidden');
+                    if (timelineProgress) timelineProgress.style.width = '0%';
+                });
+            }
         });
     </script>
 </body>
