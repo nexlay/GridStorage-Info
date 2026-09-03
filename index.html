@@ -162,18 +162,14 @@
             </div>
 
             <div class="relative bg-cardBg border border-cardBorder rounded-[32px] p-2.5 sm:p-4 shadow-2xl overflow-hidden max-w-3xl mx-auto">
-                <!-- Glowing ambient background lights -->
                 <div class="absolute -top-12 -left-12 w-48 h-48 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
-                <!-- Custom Video Player Container -->
                 <div id="videoContainer" class="relative aspect-video w-full rounded-[24px] overflow-hidden bg-slate-950 border border-slate-800/80 group">
                     
-                    <!-- Interactive Play Overlay / Poster (Pure HTML) -->
                     <div id="videoPlayOverlay" class="absolute inset-0 bg-slate-950/85 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center transition-all duration-500 z-20 cursor-pointer">
                         <div class="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none"></div>
                         
-                        <!-- Pulsing play icon -->
                         <div class="relative mb-6">
                             <div class="absolute inset-0 bg-blue-500/20 rounded-full blur-md animate-pulse scale-125"></div>
                             <button class="relative w-16 h-16 sm:w-20 sm:h-20 bg-blue-600 hover:bg-blue-500 hover:scale-105 active:scale-95 text-white rounded-full flex items-center justify-center transition-all shadow-lg shadow-blue-500/30 border border-blue-400/30">
@@ -187,7 +183,6 @@
                         <p class="text-slate-400 text-xs sm:text-sm max-w-md relative z-10">Watch our quick overview.</p>
                     </div>
 
-                    <!-- Placeholder/Thumbnail Background before click -->
                     <div class="absolute inset-0 w-full h-full bg-slate-900 flex items-center justify-center opacity-25 pointer-events-none">
                         <svg class="w-20 h-20 text-slate-800 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -224,6 +219,31 @@
             </div>
         </div>
 
+        <!-- Ko-fi Support Section -->
+        <section class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-12 reveal">
+            <div class="relative bg-cardBg border border-[#29ABE0]/30 rounded-[32px] p-8 sm:p-12 text-center overflow-hidden shadow-2xl shadow-[#29ABE0]/10">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-[#29ABE0] to-transparent"></div>
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-24 bg-[#29ABE0]/10 blur-[50px] rounded-full pointer-events-none"></div>
+                
+                <div class="inline-flex items-center justify-center p-4 bg-[#29ABE0]/10 rounded-2xl border border-[#29ABE0]/20 shadow-inner mb-6 text-[#29ABE0]">
+                    <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3m4-3v3m4-3v3" />
+                    </svg>
+                </div>
+                
+                <h2 class="text-2xl sm:text-3xl font-bold text-white font-display mb-3 relative z-10">Support Development</h2>
+                <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed mb-8 relative z-10">
+                    GridStorage is built with passion and dedication to private, local-first inventory management. If you like the project, consider buying us a coffee on Ko-fi!
+                </p>
+                <a href="https://ko-fi.com/gridstorage" target="_blank" rel="noopener noreferrer" class="relative z-10 inline-flex items-center justify-center gap-3 bg-[#29ABE0] hover:bg-[#2390be] text-white font-semibold py-3.5 px-8 rounded-xl transition-all shadow-lg shadow-[#29ABE0]/20 outline-none focus:ring-2 focus:ring-white">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3m4-3v3m4-3v3" />
+                    </svg>
+                    <span>Support on Ko-fi</span>
+                </a>
+            </div>
+        </section>
+
         <main id="server-setup" class="max-w-3xl mx-auto px-4 sm:px-6 pb-24 space-y-6 sm:space-y-8 scroll-mt-8">
             
             <div class="text-center mb-10 reveal">
@@ -232,7 +252,6 @@
             </div>
 
             <section class="bg-cardBg border border-cardBorder rounded-[28px] sm:rounded-[32px] p-6 sm:p-10 shadow-xl reveal">
-                <!-- Sekcja Publiczna: Pobieranie Serwera -->
                 <div class="flex items-center gap-3 mb-4">
                     <span class="px-2.5 py-1 bg-blue-500/10 text-blue-400 text-[10px] font-bold uppercase tracking-wider rounded-md border border-blue-500/20">Node v1.0.0</span>
                     <span class="text-[11px] font-medium text-slate-500">~ 4.0 KB</span>
@@ -248,7 +267,6 @@
                     <span>Download Server Bundle (.zip)</span>
                 </a>
 
-                <!-- Sekcja Zamknięta: Beta Panelu Web -->
                 <div class="pt-8 border-t border-slate-800">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="px-2.5 py-1 bg-amber-500/10 text-amber-400 text-[10px] font-bold uppercase tracking-wider rounded-md border border-amber-500/20">Closed Beta</span>
@@ -552,10 +570,10 @@
 
             if (videoContainer && playOverlay) {
                 playOverlay.addEventListener('click', () => {
-                    // Create iframe element
+                    // Create iframe element with updated YouTube video ID (IP_2a_CX-dU)
                     const iframe = document.createElement('iframe');
                     iframe.setAttribute('class', 'w-full h-full absolute inset-0 z-10 border-0');
-                    iframe.setAttribute('src', 'https://youtu.be/IP_2a_CX-dU?si=9Mgd_XmQA4CrZs9E');
+                    iframe.setAttribute('src', 'https://www.youtube.com/embed/IP_2a_CX-dU?autoplay=1&rel=0&modestbranding=1&fs=0');
                     iframe.setAttribute('title', 'GridStorage Tour');
                     iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
                     
